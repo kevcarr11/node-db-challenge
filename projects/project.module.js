@@ -16,16 +16,21 @@ function get() {
 }
 
 async function getById(id) {
-  const project = await db('projects').where(id, id)
+  const projectList = await db('projects').where(id, id)
+  const project = projectList.map(project => mappers.projectToBody(project))
   const resources = await db('resources')
+  const taskList = await db('tasks').where(id, id)
+  const tasks = taskList.map(task => mappers.taskToBody(task))
   const mapping = await db('projects_resources')
   const rtnList = project.map(indProject => {
     const resourceList = mapping.filter(({project_id}) => project_id === indProject.id).map(({resource_id}) => resource_id)
     const rtnResource = resourceList.map(resource => resources.filter(({id}) => id === resource)[0])
+    
   
     return {
       ...indProject,
-      resources: rtnResource
+      tasks,
+      resources: rtnResource,
     }
   })
   return rtnList

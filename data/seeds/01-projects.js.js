@@ -1,6 +1,6 @@
 
-exports.seed = async function(knex) {
-  await knex("projects").inserts([
+exports.seed = function(knex) {
+  return knex("projects").insert([
     {
       name: "Land a Job as a Web Developer",
       description: "This would be my dream job",

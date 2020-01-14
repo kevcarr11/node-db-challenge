@@ -1,6 +1,6 @@
 module.exports = {
   intToBoolean,
-  booleanToInt,
+  // booleanToInt,
   projectToBody,
   // taskToBody,
 }
@@ -10,9 +10,9 @@ function intToBoolean(int) {
   return int === 1 ? true : false
 }
 
-function booleanToInt(bool) {
-  return bool === true ? 1 : 0 
-}
+// function booleanToInt(bool) {
+//   return bool === true ? 1 : 0 
+// }
 
 function projectToBody(project) {
   const result = {

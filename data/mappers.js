@@ -2,7 +2,7 @@ module.exports = {
   intToBoolean,
   booleanToInt,
   projectToBody,
-  taskToBody,
+  // taskToBody,
 }
 
 
@@ -23,16 +23,16 @@ function projectToBody(project) {
   if (project.tasks) {
     result.tasks = project.tasks.map(task => ({
       ...task,
-      completed: intToBoolean(action.completed),
+      completed: intToBoolean(task.completed),
     }));
   }
 
   return result
 }
 
-function taskToBody(task) {
-  return {
-    ...task,
-    completed: intToBoolean(task.completed),
-  }
-}
+// function taskToBody(task) {
+//   return {
+//     ...task,
+//     completed: intToBoolean(task.completed),
+//   }
+// }

@@ -12,7 +12,7 @@ function getProjectTasks(projectId) {
     .where({ project_id: projectId })
     .select(["tasks.id", "tasks.description", "tasks.notes", "tasks.completed", "projects.id as projectId", "projects.name as project,"])
       .then(tasks => {
-        return tasks.map(task => mappers.taskToBody(task))
+        return tasks.map(task => mappers.projectToBody(task))
       })
 }
 
